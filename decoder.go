@@ -10,6 +10,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"golang.org/x/net/html/charset"
 )
 
 const (
@@ -22,7 +24,7 @@ const (
 var (
 	// CharsetReader is a function to generate reader which converts a non UTF-8
 	// charset into UTF-8.
-	CharsetReader func(string, io.Reader) (io.Reader, error)
+	CharsetReader = charset.NewReaderLabel
 
 	timeLayouts     = []string{iso8601, iso8601Z, iso8601Hyphen, iso8601HyphenZ}
 	invalidXmlError = errors.New("invalid xml")
